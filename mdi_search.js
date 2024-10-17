@@ -11,8 +11,13 @@ async function run(argv) {
     // Use console.error for debug logging
     console.error("Raw arguments:", argv);
     try {
-        const query = argv.join(' ').toLowerCase();
+        let query = argv.join(' ').toLowerCase();
         console.error("🚀 ~ run ~ query:", query);
+        
+        const isSvgQuery = query.endsWith(' /svg');
+        if (isSvgQuery) {
+            query = query.slice(0, -5).trim(); // Remove ' /svg' from the end
+        }
         
         if (query.length < 3) {
             console.log(JSON.stringify({
@@ -24,7 +29,8 @@ async function run(argv) {
                 }],
                 debugInfo: {
                     query: query,
-                    queryLength: query.length
+                    queryLength: query.length,
+                    isSvgQuery: isSvgQuery
                 }
             }));
             return;
@@ -51,8 +57,8 @@ async function run(argv) {
             return {
                 uid: icon.n,
                 title: icon.n,
-                subtitle: `Aliases: ${icon.al ? icon.al.join(', ') : 'None'}`,
-                arg: `import { ${camelCaseName} } from '@mdi/js'`,
+                subtitle: isSvgQuery ? 'Copy SVG path' : `Aliases: ${icon.al ? icon.al.join(', ') : 'None'}`,
+                arg: isSvgQuery ? icon.p : `import { ${camelCaseName} } from '@mdi/js'`,
                 icon: {
                     path: svgPath
                 }
