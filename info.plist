@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>bundleid</key>
+    <string>com.yourdomain.mdi-search</string>
+    <key>category</key>
+    <string>Tools</string>
+    <key>connections</key>
+    <dict>
+        <key>XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</key>
+        <array>
+            <dict>
+                <key>destinationuid</key>
+                <string>YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY</string>
+                <key>modifiers</key>
+                <integer>0</integer>
+                <key>modifiersubtext</key>
+                <string></string>
+                <key>vitoclose</key>
+                <false/>
+            </dict>
+        </array>
+    </dict>
+    <key>createdby</key>
+    <string>Your Name</string>
+    <key>description</key>
+    <string>Search Material Design Icons</string>
+    <key>disabled</key>
+    <false/>
+    <key>name</key>
+    <string>MDI Search</string>
+    <key>objects</key>
+    <array>
+        <dict>
+            <key>config</key>
+            <dict>
+                <key>alfredfiltersresults</key>
+                <false/>
+                <key>argumenttype</key>
+                <integer>0</integer>
+                <key>escaping</key>
+                <integer>102</integer>
+                <key>keyword</key>
+                <string>mdi</string>
+                <key>queuedelaycustom</key>
+                <integer>3</integer>
+                <key>queuedelayimmediatelyinitially</key>
+                <true/>
+                <key>queuedelaymode</key>
+                <integer>0</integer>
+                <key>queuemode</key>
+                <integer>1</integer>
+                <key>runningsubtext</key>
+                <string>Searching icons...</string>
+                <key>script</key>
+                <string>/usr/bin/python3 mdi_search.py "{query}"</string>
+                <key>scriptargtype</key>
+                <integer>0</integer>
+                <key>scriptfile</key>
+                <string></string>
+                <key>subtext</key>
+                <string>Search for Material Design Icons</string>
+                <key>title</key>
+                <string>Search MDI</string>
+                <key>type</key>
+                <integer>0</integer>
+                <key>withspace</key>
+                <true/>
+            </dict>
+            <key>type</key>
+            <string>alfred.workflow.input.scriptfilter</string>
+            <key>uid</key>
+            <string>XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</string>
+            <key>version</key>
+            <integer>3</integer>
+        </dict>
+        <dict>
+            <key>config</key>
+            <dict>
+                <key>autopaste</key>
+                <false/>
+                <key>clipboardtext</key>
+                <string>{query}</string>
+                <key>transient</key>
+                <false/>
+            </dict>
+            <key>type</key>
+            <string>alfred.workflow.output.clipboard</string>
+            <key>uid</key>
+            <string>YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY</string>
+            <key>version</key>
+            <integer>3</integer>
+        </dict>
+    </array>
+    <key>readme</key>
+    <string>Search Material Design Icons using the keyword 'mdi' followed by your search term. Select an icon to copy its SVG path to the clipboard.</string>
+    <key>uidata</key>
+    <dict>
+        <key>XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX</key>
+        <dict>
+            <key>xpos</key>
+            <integer>100</integer>
+            <key>ypos</key>
+            <integer>100</integer>
+        </dict>
+        <key>YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY</key>
+        <dict>
+            <key>xpos</key>
+            <integer>300</integer>
+            <key>ypos</key>
+            <integer>100</integer>
+        </dict>
+    </dict>
+    <key>version</key>
+    <string>1.0</string>
+    <key>webaddress</key>
+    <string>https://yourdomain.com</string>
+</dict>
+</plist>
