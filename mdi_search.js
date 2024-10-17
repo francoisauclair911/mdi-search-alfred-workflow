@@ -14,16 +14,16 @@ async function run(argv) {
         let query = argv.join(' ').toLowerCase();
         console.error("🚀 ~ run ~ query:", query);
         
-        const isSvgQuery = query.endsWith(' /svg');
+        const isSvgQuery = query.endsWith('/svg') || query.endsWith('/svg ');
         if (isSvgQuery) {
             query = query.slice(0, -5).trim(); // Remove ' /svg' from the end
         }
         
-        if (query.length < 3) {
+        if (query.length < 1) {
             console.log(JSON.stringify({
                 items: [{
                     uid: 'wait',
-                    title: 'Please enter at least 3 characters',
+                    title: 'Please enter at least 2 characters',
                     subtitle: 'Waiting for more input...',
                     arg: 'wait'
                 }],
