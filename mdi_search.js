@@ -1,6 +1,3 @@
-const fs = require('fs').promises;
-const path = require('path');
-
 async function run(argv) {
     console.log('Script started'); // Log script start
 
@@ -8,27 +5,31 @@ async function run(argv) {
         const query = argv[0] ? argv[0].toLowerCase() : '';
         console.log(`Query: "${query}"`); // Log the query
 
-        const iconDataPath = path.join(__dirname, 'mdi-icons.json');
-        console.log(`Reading file: ${iconDataPath}`); // Log file path
+        const iconDataUrl = 'https://pictogrammers.com/data/mdi-7.4.47.json';
+        console.log(`Fetching data from: ${iconDataUrl}`); // Log URL
 
-        const iconData = JSON.parse(await fs.readFile(iconDataPath, 'utf8'));
-        const icons = iconData.i;
+        const response = await fetch(iconDataUrl);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const iconData = await response.json();
+        const icons = iconData.icons;
 
         console.log(`Total icons: ${icons.length}`); // Log total number of icons
 
         const matchingIcons = icons.filter(icon => 
-            icon.n.toLowerCase().includes(query) || 
-            icon.al.some(alias => alias.toLowerCase().includes(query))
+            icon.name.toLowerCase().includes(query) || 
+            icon.aliases.some(alias => alias.toLowerCase().includes(query))
         );
 
         console.log(`Matching icons: ${matchingIcons.length}`); // Log number of matching icons
 
         const items = matchingIcons.map(icon => ({
-            title: icon.n,
-            subtitle: `Aliases: ${icon.al.join(', ')}`,
-            arg: icon.p,
+            title: icon.name,
+            subtitle: `Aliases: ${icon.aliases.join(', ')}`,
+            arg: icon.data,
             icon: {
-                path: `data:image/svg+xml,${encodeURIComponent(generateSVG(icon.p))}`
+                path: `data:image/svg+xml,${encodeURIComponent(generateSVG(icon.data))}`
             }
         }));
 
@@ -48,8 +49,6 @@ async function run(argv) {
 function generateSVG(path) {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="${path}"/></svg>`;
 }
-
-module.exports = { run };
 
 // If this script is run directly (not imported as a module)
 if (require.main === module) {
