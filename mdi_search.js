@@ -13,8 +13,9 @@ async function run(argv) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const iconData = await response.json();
-        const icons = iconData.icons;
-
+        const icons = iconData.i;
+        console.log("🚀 ~ run ~ icons:", icons)
+            
         console.log(`Total icons: ${icons.length}`); // Log total number of icons
 
         const matchingIcons = icons.filter(icon => 
