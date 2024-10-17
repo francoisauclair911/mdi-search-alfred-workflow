@@ -30,7 +30,7 @@ async function run(argv) {
             subtitle: `Aliases: ${icon.al.join(', ')}`,
             arg: icon.p,
             icon: {
-                path: `data:image/svg+xml,${encodeURIComponent(generateSVG(icon.data))}`
+                path: `data:image/svg+xml,${encodeURIComponent(generateSVG(icon.p))}`
             }
         }));
 
