@@ -1,6 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
+function kebabToCamelCase(str) {
+    return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+}
+
 async function run(argv) {
     // Use console.error for debug logging
     console.error("Raw arguments:", argv);
@@ -41,11 +45,12 @@ async function run(argv) {
 
         const items = await Promise.all(matchingIcons.map(async icon => {
             const svgPath = await generateAndSaveSVG(icon.n, icon.p);
+            const camelCaseName = kebabToCamelCase(icon.n);
             return {
                 uid: icon.n,
                 title: icon.n,
                 subtitle: `Aliases: ${icon.al ? icon.al.join(', ') : 'None'}`,
-                arg: "icon.p",
+                arg: camelCaseName,
                 icon: {
                     path: svgPath
                 }
