@@ -4,6 +4,23 @@ const path = require('path');
 async function run(argv) {
     try {
         const query = argv[0] ? argv[0].toLowerCase() : '';
+        
+        if (query.length < 3) {
+            console.log(JSON.stringify({
+                items: [{
+                    uid: 'wait',
+                    title: 'Please enter at least 3 characters',
+                    subtitle: 'Waiting for more input...',
+                    arg: 'wait'
+                }],
+                debugInfo: {
+                    query: query,
+                    queryLength: query.length
+                }
+            }));
+            return;
+        }
+
         const iconDataUrl = 'https://pictogrammers.com/data/mdi-7.4.47.json';
 
         const response = await fetch(iconDataUrl);
