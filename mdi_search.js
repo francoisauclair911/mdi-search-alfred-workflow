@@ -1,4 +1,5 @@
-const fs = require('fs').promises;
+const fs = require('fs');
+const fsPromises = fs.promises;
 const path = require('path');
 
 const CACHE_FILE = path.join(__dirname, 'icon_cache.json');
@@ -105,17 +106,17 @@ async function generateAndSaveSVG(iconName, iconPath) {
     const svgFilePath = path.join(__dirname, 'icons', svgFileName);
 
     // Ensure the icons directory exists
-    await fs.promises.mkdir(path.join(__dirname, 'icons'), { recursive: true });
+    await fsPromises.mkdir(path.join(__dirname, 'icons'), { recursive: true });
 
     // Check if the file already exists
     try {
-        await fs.promises.access(svgFilePath);
+        await fsPromises.access(svgFilePath);
         // If the file exists, just return the path
         return svgFilePath;
     } catch (error) {
         // If the file doesn't exist, generate and save it
         const svgContent = generateSVG(iconPath);
-        await fs.promises.writeFile(svgFilePath, svgContent, 'utf8');
+        await fsPromises.writeFile(svgFilePath, svgContent, 'utf8');
         return svgFilePath;
     }
 }
@@ -144,7 +145,7 @@ async function getCachedOrFetchIconData() {
 }
 
 async function readCacheFile() {
-    const data = await fs.readFile(CACHE_FILE, 'utf8');
+    const data = await fsPromises.readFile(CACHE_FILE, 'utf8');
     return JSON.parse(data);
 }
 
@@ -153,7 +154,7 @@ async function writeCacheFile(data) {
         timestamp: Date.now(),
         data: data
     };
-    await fs.writeFile(CACHE_FILE, JSON.stringify(cacheData), 'utf8');
+    await fsPromises.writeFile(CACHE_FILE, JSON.stringify(cacheData), 'utf8');
 }
 
 run(process.argv.slice(2));
