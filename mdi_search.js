@@ -16,13 +16,10 @@ async function run(argv) {
         const matchingIcons = icons.filter(icon => {
             const name = icon.n.toLowerCase();
             const aliases = icon.al ? icon.al.map(alias => alias.toLowerCase()) : [];
-            return name.includes(query) || aliases.some(alias => alias.includes(query));
+            return name === query || name.startsWith(query) || aliases.some(alias => alias === query || alias.startsWith(query));
         });
 
-        // Limit the number of icons we process to 50
-        const limitedIcons = matchingIcons.slice(0, 50);
-
-        const items = await Promise.all(limitedIcons.map(async icon => {
+        const items = await Promise.all(matchingIcons.map(async icon => {
             const svgPath = await generateAndSaveSVG(icon.n, icon.p);
             return {
                 uid: icon.n,
@@ -39,7 +36,8 @@ async function run(argv) {
         const debugInfo = {
             totalMatches: matchingIcons.length,
             displayedMatches: items.length,
-            query: query
+            query: query,
+            matchingIconNames: matchingIcons.map(icon => icon.n)
         };
 
         console.log(JSON.stringify({ items, debugInfo }));
