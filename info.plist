@@ -64,7 +64,10 @@
 
 /usr/local/bin/node &lt;&lt;EOF
 const { run } = require('./mdi_search.js');
-run(process.argv.slice(2));
+run(process.argv.slice(2)).catch(error => {
+  console.error('Unhandled error:', error);
+  process.exit(1);
+});
 EOF</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>

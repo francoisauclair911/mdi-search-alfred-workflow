@@ -1,7 +1,7 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 
-function run(argv) {
+async function run(argv) {
     console.error('Script started'); // Log script start
 
     try {
@@ -11,7 +11,7 @@ function run(argv) {
         const iconDataPath = path.join(__dirname, 'mdi-icons.json');
         console.error(`Reading file: ${iconDataPath}`); // Log file path
 
-        const iconData = JSON.parse(fs.readFileSync(iconDataPath, 'utf8'));
+        const iconData = JSON.parse(await fs.readFile(iconDataPath, 'utf8'));
         const icons = iconData.i;
 
         console.error(`Total icons: ${icons.length}`); // Log total number of icons
@@ -50,3 +50,11 @@ function generateSVG(path) {
 }
 
 module.exports = { run };
+
+// If this script is run directly (not imported as a module)
+if (require.main === module) {
+    run(process.argv.slice(2)).catch(error => {
+        console.error('Unhandled error:', error);
+        process.exit(1);
+    });
+}
