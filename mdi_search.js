@@ -2,7 +2,9 @@ const fs = require('fs');
 const path = require('path');
 
 function kebabToCamelCase(str) {
-    return str.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+    return 'mdi' + str.split('-').map((part, index) => 
+        index === 0 ? part.charAt(0).toUpperCase() + part.slice(1) : part.charAt(0).toUpperCase() + part.slice(1)
+    ).join('');
 }
 
 async function run(argv) {
@@ -50,7 +52,7 @@ async function run(argv) {
                 uid: icon.n,
                 title: icon.n,
                 subtitle: `Aliases: ${icon.al ? icon.al.join(', ') : 'None'}`,
-                arg: camelCaseName,
+                arg: `import { ${camelCaseName} } from '@mdi/js'`,
                 icon: {
                     path: svgPath
                 }
