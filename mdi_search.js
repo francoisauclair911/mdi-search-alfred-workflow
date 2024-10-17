@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 async function run(argv) {
+    console.log("Raw arguments:", argv);
     try {
         const query = argv.join(' ').toLowerCase();
         console.log("🚀 ~ run ~ query:", query)
