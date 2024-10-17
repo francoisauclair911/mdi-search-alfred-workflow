@@ -18,15 +18,12 @@ async function run(argv) {
             const aliases = icon.al ? icon.al.map(alias => alias.toLowerCase()) : [];
             return name.includes(query) || aliases.some(alias => alias.includes(query));
         });
-        console.log("🚀 ~ matchingIcons ~ matchingIcons:", matchingIcons.length)
-        console.log("🚀 ~ matchingIcons ~ matchingIcons:", matchingIcons[0].n)
-
         const items = await Promise.all(matchingIcons.map(async icon => {
             const svgPath = await generateAndSaveSVG(icon.n, icon.p);
             return {
                 uid: icon.n,
                 title: icon.n,
-                subtitle: `Aliases: ${icon.al.join(', ')}`,
+                subtitle: `Aliases: ${icon.al ? icon.al.join(', ') : 'None'}`,
                 arg: icon.p,
                 icon: {
                     path: svgPath
@@ -34,7 +31,7 @@ async function run(argv) {
             };
         }));
 
-        // console.log(JSON.stringify({ items }));
+        console.log(JSON.stringify({ items }));
     } catch (error) {
         console.log(JSON.stringify({ 
             items: [{
