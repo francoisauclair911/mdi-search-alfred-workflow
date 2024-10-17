@@ -3,332 +3,35 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>string.multitool</string>
+	<string>com.yourdomain.materialdesigniconsearch</string>
 	<key>category</key>
-	<string>Productivity</string>
+	<string>Design</string>
 	<key>connections</key>
-	<dict>
-		<key>359ED8A6-D6B4-4DFE-91D5-86369F1575AB</key>
-		<array/>
-		<key>3C1C03B4-3F15-4D14-AD56-90548CCC2053</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>D933C8C0-173B-4E92-A833-B0675776D6EE</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>52225363-168D-443A-8902-BAB71D372C80</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>BDCAAEF8-B139-428A-BB4F-D6CC0CA11AB0</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>BDCAAEF8-B139-428A-BB4F-D6CC0CA11AB0</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>359ED8A6-D6B4-4DFE-91D5-86369F1575AB</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>B04738DE-8976-486F-99CD-0D35D23DAA21</string>
-				<key>modifiers</key>
-				<integer>1048576</integer>
-				<key>modifiersubtext</key>
-				<string>Paste to frontmost app</string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>F588E54E-872F-469C-AFE6-46EFDF12A4C6</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>BDCAAEF8-B139-428A-BB4F-D6CC0CA11AB0</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-	</dict>
+	<dict/>
 	<key>createdby</key>
-	<string>Yuri Mazursky</string>
+	<string>Your Name</string>
 	<key>description</key>
-	<string>Handy string transforming tools for developers</string>
+	<string>Quickly search and copy Material Design Icons</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Material Design Icons Search</string>
-	<key>description</key>
-	<string>Search and copy Material Design Icons</string>
+	<string>Material Design Icon Finder</string>
 	<key>objects</key>
-	<array>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>359ED8A6-D6B4-4DFE-91D5-86369F1575AB</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<false/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<true/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>68</integer>
-				<key>keyword</key>
-				<string>mdi</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string></string>
-				<key>script</key>
-				<string></string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string>./mdi_search.js</string>
-				<key>subtext</key>
-				<string>Search Material Design Icons</string>
-				<key>title</key>
-				<string>MDI Search</string>
-				<key>type</key>
-				<integer>8</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>BDCAAEF8-B139-428A-BB4F-D6CC0CA11AB0</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>1</integer>
-				<key>focusedappvariable</key>
-				<false/>
-				<key>focusedappvariablename</key>
-				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
-			<key>uid</key>
-			<string>52225363-168D-443A-8902-BAB71D372C80</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>acceptsfiles</key>
-				<false/>
-				<key>acceptsmulti</key>
-				<integer>1</integer>
-				<key>acceptstext</key>
-				<true/>
-				<key>acceptsurls</key>
-				<true/>
-				<key>name</key>
-				<string>String Multitool</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.trigger.universalaction</string>
-			<key>uid</key>
-			<string>F588E54E-872F-469C-AFE6-46EFDF12A4C6</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<true/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>B04738DE-8976-486F-99CD-0D35D23DAA21</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>https://github.com/colomolo/alfred-string-multitool</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>D933C8C0-173B-4E92-A833-B0675776D6EE</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>keyword</key>
-				<string>{var:keyword}?</string>
-				<key>subtext</key>
-				<string></string>
-				<key>text</key>
-				<string>Help</string>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.keyword</string>
-			<key>uid</key>
-			<string>3C1C03B4-3F15-4D14-AD56-90548CCC2053</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-	</array>
+	<array/>
 	<key>readme</key>
-	<string># String Multitool
-Alfred workflow with handy string transforming tools.
+	<string># Material Design Icon Finder
+An Alfred workflow to quickly search and copy Material Design Icons.
 
-[Description](https://github.com/colomolo/alfred-string-multitool/blob/main/README.md)</string>
+[Full Description and Usage Instructions]</string>
 	<key>uidata</key>
-	<dict>
-		<key>359ED8A6-D6B4-4DFE-91D5-86369F1575AB</key>
-		<dict>
-			<key>xpos</key>
-			<real>525</real>
-			<key>ypos</key>
-			<real>185</real>
-		</dict>
-		<key>3C1C03B4-3F15-4D14-AD56-90548CCC2053</key>
-		<dict>
-			<key>xpos</key>
-			<real>230</real>
-			<key>ypos</key>
-			<real>475</real>
-		</dict>
-		<key>52225363-168D-443A-8902-BAB71D372C80</key>
-		<dict>
-			<key>xpos</key>
-			<real>65</real>
-			<key>ypos</key>
-			<real>185</real>
-		</dict>
-		<key>B04738DE-8976-486F-99CD-0D35D23DAA21</key>
-		<dict>
-			<key>xpos</key>
-			<real>525</real>
-			<key>ypos</key>
-			<real>335</real>
-		</dict>
-		<key>BDCAAEF8-B139-428A-BB4F-D6CC0CA11AB0</key>
-		<dict>
-			<key>xpos</key>
-			<real>230</real>
-			<key>ypos</key>
-			<real>185</real>
-		</dict>
-		<key>D933C8C0-173B-4E92-A833-B0675776D6EE</key>
-		<dict>
-			<key>xpos</key>
-			<real>405</real>
-			<key>ypos</key>
-			<real>475</real>
-		</dict>
-		<key>F588E54E-872F-469C-AFE6-46EFDF12A4C6</key>
-		<dict>
-			<key>xpos</key>
-			<real>65</real>
-			<key>ypos</key>
-			<real>320</real>
-		</dict>
-	</dict>
+	<dict/>
 	<key>userconfigurationconfig</key>
 	<array>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>default</key>
-				<string>string</string>
+				<string>mdi</string>
 				<key>placeholder</key>
 				<string></string>
 				<key>required</key>
@@ -337,9 +40,9 @@ Alfred workflow with handy string transforming tools.
 				<true/>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>Keyword to trigger the workflow</string>
 			<key>label</key>
-			<string>Keyword</string>
+			<string>Trigger Keyword</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
@@ -347,8 +50,8 @@ Alfred workflow with handy string transforming tools.
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.1.0</string>
+	<string>2.0.0</string>
 	<key>webaddress</key>
-	<string>http://colomolome.com</string>
+	<string>https://github.com/yourusername/material-design-icon-finder</string>
 </dict>
 </plist>
