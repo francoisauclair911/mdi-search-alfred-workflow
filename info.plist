@@ -80,7 +80,9 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>String multitool</string>
+	<string>Material Design Icons Search</string>
+	<key>description</key>
+	<string>Search and copy Material Design Icons</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -118,7 +120,7 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>keyword</key>
-				<string>{var:keyword}</string>
+				<string>mdi</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -134,11 +136,11 @@
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string>./transform.js</string>
+				<string>./mdi_search.js</string>
 				<key>subtext</key>
-				<string></string>
+				<string>Search Material Design Icons</string>
 				<key>title</key>
-				<string>String multitool</string>
+				<string>MDI Search</string>
 				<key>type</key>
 				<integer>8</integer>
 				<key>withspace</key>
