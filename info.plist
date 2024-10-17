@@ -3,55 +3,133 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.yourdomain.materialdesigniconsearch</string>
+	<string>com.customdomain.mdiiconsearch</string>
 	<key>category</key>
 	<string>Design</string>
 	<key>connections</key>
-	<dict/>
+	<dict>
+		<key>B1E0E6D7-C4F1-4F2A-8EF3-F2F7B28D9C4B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D8E3A1E2-9B0F-4F1A-8E5D-C7F7B28D9C4B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
 	<key>createdby</key>
-	<string>Your Name</string>
+	<string>Custom Creator</string>
 	<key>description</key>
-	<string>Quickly search and copy Material Design Icons</string>
+	<string>Search and copy Material Design Icons</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Material Design Icon Finder</string>
+	<string>MDI Icon Search</string>
 	<key>objects</key>
-	<array/>
-	<key>readme</key>
-	<string># Material Design Icon Finder
-An Alfred workflow to quickly search and copy Material Design Icons.
-
-[Full Description and Usage Instructions]</string>
-	<key>uidata</key>
-	<dict/>
-	<key>userconfigurationconfig</key>
 	<array>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>default</key>
-				<string>mdi</string>
-				<key>placeholder</key>
-				<string></string>
-				<key>required</key>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
 				<true/>
-				<key>trim</key>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>mdi</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Searching icons...</string>
+				<key>script</key>
+				<string>./mdi_search.js "$1"</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>Search for Material Design Icons</string>
+				<key>title</key>
+				<string>Search MDI Icons</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
 				<true/>
 			</dict>
-			<key>description</key>
-			<string>Keyword to trigger the workflow</string>
-			<key>label</key>
-			<string>Trigger Keyword</string>
 			<key>type</key>
-			<string>textfield</string>
-			<key>variable</key>
-			<string>keyword</string>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>B1E0E6D7-C4F1-4F2A-8EF3-F2F7B28D9C4B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>D8E3A1E2-9B0F-4F1A-8E5D-C7F7B28D9C4B</string>
+			<key>version</key>
+			<integer>3</integer>
 		</dict>
 	</array>
+	<key>readme</key>
+	<string># MDI Icon Search
+
+This Alfred workflow allows you to quickly search and copy Material Design Icons.
+
+## Usage
+1. Trigger the workflow with the keyword "mdi"
+2. Type your search query
+3. Select an icon to copy its SVG path to the clipboard
+
+Enjoy quick access to Material Design Icons!</string>
+	<key>uidata</key>
+	<dict>
+		<key>B1E0E6D7-C4F1-4F2A-8EF3-F2F7B28D9C4B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>100</integer>
+			<key>ypos</key>
+			<integer>100</integer>
+		</dict>
+		<key>D8E3A1E2-9B0F-4F1A-8E5D-C7F7B28D9C4B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>300</integer>
+			<key>ypos</key>
+			<integer>100</integer>
+		</dict>
+	</dict>
 	<key>version</key>
-	<string>2.0.0</string>
+	<string>1.0.0</string>
 	<key>webaddress</key>
-	<string>https://github.com/yourusername/material-design-icon-finder</string>
+	<string>https://github.com/customusername/mdi-icon-search</string>
 </dict>
 </plist>
