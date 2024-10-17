@@ -30,8 +30,9 @@ async function run(argv) {
                 }
             };
         }));
-
+        
         console.log(JSON.stringify({ items }));
+        // console.log("🚀 ~ items ~ items:", items.length)
     } catch (error) {
         console.log(JSON.stringify({ 
             items: [{
