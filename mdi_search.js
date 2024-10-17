@@ -2,26 +2,26 @@ const fs = require('fs').promises;
 const path = require('path');
 
 async function run(argv) {
-    console.error('Script started'); // Log script start
+    console.log('Script started'); // Log script start
 
     try {
         const query = argv[0] ? argv[0].toLowerCase() : '';
-        console.error(`Query: "${query}"`); // Log the query
+        console.log(`Query: "${query}"`); // Log the query
 
         const iconDataPath = path.join(__dirname, 'mdi-icons.json');
-        console.error(`Reading file: ${iconDataPath}`); // Log file path
+        console.log(`Reading file: ${iconDataPath}`); // Log file path
 
         const iconData = JSON.parse(await fs.readFile(iconDataPath, 'utf8'));
         const icons = iconData.i;
 
-        console.error(`Total icons: ${icons.length}`); // Log total number of icons
+        console.log(`Total icons: ${icons.length}`); // Log total number of icons
 
         const matchingIcons = icons.filter(icon => 
             icon.n.toLowerCase().includes(query) || 
             icon.al.some(alias => alias.toLowerCase().includes(query))
         );
 
-        console.error(`Matching icons: ${matchingIcons.length}`); // Log number of matching icons
+        console.log(`Matching icons: ${matchingIcons.length}`); // Log number of matching icons
 
         const items = matchingIcons.map(icon => ({
             title: icon.n,
@@ -34,7 +34,7 @@ async function run(argv) {
 
         console.log(JSON.stringify({ items }));
     } catch (error) {
-        console.error('Error:', error.message);
+        console.log('Error:', error.message);
         console.log(JSON.stringify({ 
             items: [{
                 title: 'Error occurred',
@@ -54,7 +54,7 @@ module.exports = { run };
 // If this script is run directly (not imported as a module)
 if (require.main === module) {
     run(process.argv.slice(2)).catch(error => {
-        console.error('Unhandled error:', error);
+        console.log('Unhandled error:', error);
         process.exit(1);
     });
 }
