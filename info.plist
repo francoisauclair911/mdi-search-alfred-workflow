@@ -61,7 +61,9 @@
 				<string>Searching icons...</string>
 				<key>script</key>
 				<string>#!/usr/bin/env node
-require('./mdi_search.js').run(process.argv.slice(2))</string>
+
+const { run } = require('./mdi_search.js');
+run(process.argv.slice(2));</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
