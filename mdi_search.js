@@ -3,10 +3,7 @@ const path = require('path');
 
 async function run(argv) {
     try {
-        const query = argv[0] ? argv[0].toLowerCase() : '';
-        console.log("🚀 ~ run ~ query:", query)
-        console.log("🚀 ~ run ~ query:", query)
-        console.log("🚀 ~ run ~ query:", query)
+        const query = argv.join(' ').toLowerCase();
         console.log("🚀 ~ run ~ query:", query)
         
         if (query.length < 3) {
