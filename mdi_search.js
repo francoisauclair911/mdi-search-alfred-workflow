@@ -14,9 +14,7 @@ async function run(argv) {
         }
         const iconData = await response.json();
         const icons = iconData.i;
-        console.log("🚀 ~ run ~ icons:", icons)
             
-        console.log(`Total icons: ${icons.length}`); // Log total number of icons
 
         const matchingIcons = icons.filter(icon => 
             icon.n.toLowerCase().includes(query) || 
@@ -34,7 +32,7 @@ async function run(argv) {
             }
         }));
 
-        console.log(JSON.stringify({ items }));
+        // console.log(JSON.stringify({ items }));
     } catch (error) {
         console.log('Error:', error.message);
         console.log(JSON.stringify({ 
