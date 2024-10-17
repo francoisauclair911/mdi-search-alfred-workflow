@@ -45,21 +45,27 @@ async function run(argv) {
 }
 
 function generateSVG(path) {
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="${path}"/></svg>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="${path}" fill="white"/></svg>`;
 }
 
 async function generateAndSaveSVG(iconName, iconPath) {
-    const svgContent = generateSVG(iconPath);
     const svgFileName = `${iconName}.svg`;
     const svgFilePath = path.join(__dirname, 'icons', svgFileName);
 
     // Ensure the icons directory exists
     await fs.promises.mkdir(path.join(__dirname, 'icons'), { recursive: true });
 
-    // Write the SVG file
-    await fs.promises.writeFile(svgFilePath, svgContent, 'utf8');
-
-    return svgFilePath;
+    // Check if the file already exists
+    try {
+        await fs.promises.access(svgFilePath);
+        // If the file exists, just return the path
+        return svgFilePath;
+    } catch (error) {
+        // If the file doesn't exist, generate and save it
+        const svgContent = generateSVG(iconPath);
+        await fs.promises.writeFile(svgFilePath, svgContent, 'utf8');
+        return svgFilePath;
+    }
 }
 
 run(process.argv.slice(2));
