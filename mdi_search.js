@@ -1,10 +1,9 @@
-#!/usr/bin/env osascript -l JavaScript
-
-ObjC.import('stdlib');
+const fs = require('fs');
+const path = require('path');
 
 function run(argv) {
     const query = argv[0].toLowerCase();
-    const iconData = JSON.parse(readFile('./mdi-icons.json'));
+    const iconData = JSON.parse(fs.readFileSync(path.join(__dirname, 'mdi-icons.json'), 'utf8'));
     const icons = iconData.i;
 
     const matchingIcons = icons.filter(icon => 
@@ -21,15 +20,11 @@ function run(argv) {
         }
     }));
 
-    return JSON.stringify({ items });
-}
-
-function readFile(file) {
-    const app = Application.currentApplication();
-    app.includeStandardAdditions = true;
-    return app.read(Path(file));
+    console.log(JSON.stringify({ items }));
 }
 
 function generateSVG(path) {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="${path}"/></svg>`;
 }
+
+module.exports = { run };
