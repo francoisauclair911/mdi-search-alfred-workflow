@@ -13,10 +13,11 @@ async function run(argv) {
         const iconData = await response.json();
         const icons = iconData.i;
 
-        const matchingIcons = icons.filter(icon => 
-            icon.n.toLowerCase().includes(query) || 
-            icon.al.some(alias => alias.toLowerCase().includes(query))
-        );
+        const matchingIcons = icons.filter(icon => {
+            const name = icon.n.toLowerCase();
+            const aliases = icon.al ? icon.al.map(alias => alias.toLowerCase()) : [];
+            return name.includes(query) || aliases.some(alias => alias.includes(query));
+        });
 
         const items = await Promise.all(matchingIcons.map(async icon => {
             const svgPath = await generateAndSaveSVG(icon.n, icon.p);
