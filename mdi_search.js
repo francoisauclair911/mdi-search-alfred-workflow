@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 async function run(argv) {
     try {
         const query = argv[0] ? argv[0].toLowerCase() : '';
@@ -15,14 +18,17 @@ async function run(argv) {
             icon.al.some(alias => alias.toLowerCase().includes(query))
         );
 
-        const items = matchingIcons.map(icon => ({
-            uid: icon.n,
-            title: icon.n,
-            subtitle: `Aliases: ${icon.al.join(', ')}`,
-            arg: icon.p,
-            icon: {
-                path: `data:image/svg+xml,${encodeURIComponent(generateSVG(icon.p))}`
-            }
+        const items = await Promise.all(matchingIcons.map(async icon => {
+            const svgPath = await generateAndSaveSVG(icon.n, icon.p);
+            return {
+                uid: icon.n,
+                title: icon.n,
+                subtitle: `Aliases: ${icon.al.join(', ')}`,
+                arg: icon.p,
+                icon: {
+                    path: svgPath
+                }
+            };
         }));
 
         console.log(JSON.stringify({ items }));
@@ -40,6 +46,20 @@ async function run(argv) {
 
 function generateSVG(path) {
     return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="${path}"/></svg>`;
+}
+
+async function generateAndSaveSVG(iconName, iconPath) {
+    const svgContent = generateSVG(iconPath);
+    const svgFileName = `${iconName}.svg`;
+    const svgFilePath = path.join(__dirname, 'icons', svgFileName);
+
+    // Ensure the icons directory exists
+    await fs.promises.mkdir(path.join(__dirname, 'icons'), { recursive: true });
+
+    // Write the SVG file
+    await fs.promises.writeFile(svgFilePath, svgContent, 'utf8');
+
+    return svgFilePath;
 }
 
 run(process.argv.slice(2));
