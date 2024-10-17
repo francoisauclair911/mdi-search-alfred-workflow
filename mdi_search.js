@@ -1,5 +1,8 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
+
+const CACHE_FILE = path.join(__dirname, 'icon_cache.json');
+const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
 function kebabToCamelCase(str) {
     return 'mdi' + str.split('-').map((part, index) => 
@@ -36,13 +39,7 @@ async function run(argv) {
             return;
         }
 
-        const iconDataUrl = 'https://pictogrammers.com/data/mdi-7.4.47.json';
-
-        const response = await fetch(iconDataUrl);
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const iconData = await response.json();
+        const iconData = await getCachedOrFetchIconData();
         const icons = iconData.i;
 
         const matchingIcons = icons.filter(icon => {
@@ -121,6 +118,42 @@ async function generateAndSaveSVG(iconName, iconPath) {
         await fs.promises.writeFile(svgFilePath, svgContent, 'utf8');
         return svgFilePath;
     }
+}
+
+async function getCachedOrFetchIconData() {
+    try {
+        const cachedData = await readCacheFile();
+        if (cachedData && (Date.now() - cachedData.timestamp < CACHE_DURATION)) {
+            console.error("Using cached icon data");
+            return cachedData.data;
+        }
+    } catch (error) {
+        console.error("Error reading cache:", error);
+    }
+
+    console.error("Fetching fresh icon data");
+    const iconDataUrl = 'https://pictogrammers.com/data/mdi-7.4.47.json';
+    const response = await fetch(iconDataUrl);
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const iconData = await response.json();
+    
+    await writeCacheFile(iconData);
+    return iconData;
+}
+
+async function readCacheFile() {
+    const data = await fs.readFile(CACHE_FILE, 'utf8');
+    return JSON.parse(data);
+}
+
+async function writeCacheFile(data) {
+    const cacheData = {
+        timestamp: Date.now(),
+        data: data
+    };
+    await fs.writeFile(CACHE_FILE, JSON.stringify(cacheData), 'utf8');
 }
 
 run(process.argv.slice(2));
