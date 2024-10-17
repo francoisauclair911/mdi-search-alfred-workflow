@@ -85,6 +85,19 @@ require('./mdi_search.js').run(process.argv.slice(2))</string>
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>debug</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.debug</string>
+			<key>uid</key>
+			<string>E7F0A3B1-5D1A-4F1B-8C7D-C7F7B28D9C4B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>autopaste</key>
 				<false/>
 				<key>clipboardtext</key>
