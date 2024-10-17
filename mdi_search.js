@@ -18,7 +18,11 @@ async function run(argv) {
             const aliases = icon.al ? icon.al.map(alias => alias.toLowerCase()) : [];
             return name.includes(query) || aliases.some(alias => alias.includes(query));
         });
-        const items = await Promise.all(matchingIcons.map(async icon => {
+
+        // Limit the number of icons we process to 50
+        const limitedIcons = matchingIcons.slice(0, 50);
+
+        const items = await Promise.all(limitedIcons.map(async icon => {
             const svgPath = await generateAndSaveSVG(icon.n, icon.p);
             return {
                 uid: icon.n,
@@ -31,8 +35,14 @@ async function run(argv) {
             };
         }));
         
-        console.log(JSON.stringify({ items }));
-        // console.log("🚀 ~ items ~ items:", items.length)
+        // Add debugging information
+        const debugInfo = {
+            totalMatches: matchingIcons.length,
+            displayedMatches: items.length,
+            query: query
+        };
+
+        console.log(JSON.stringify({ items, debugInfo }));
     } catch (error) {
         console.log(JSON.stringify({ 
             items: [{
@@ -40,7 +50,10 @@ async function run(argv) {
                 title: 'Error occurred',
                 subtitle: error.message,
                 arg: 'error'
-            }]
+            }],
+            debugInfo: {
+                error: error.message
+            }
         }));
     }
 }
