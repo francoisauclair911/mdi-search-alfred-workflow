@@ -54,13 +54,20 @@ async function run(argv) {
         const items = await Promise.all(matchingIcons.map(async icon => {
             const svgPath = await generateAndSaveSVG(icon.n, icon.p);
             const camelCaseName = kebabToCamelCase(icon.n);
+            const importStatement = `import { ${camelCaseName} } from '@mdi/js'`;
             return {
                 uid: icon.n,
                 title: icon.n,
-                subtitle: isSvgQuery ? 'Copy SVG path' : `Aliases: ${icon.al ? icon.al.join(', ') : 'None'}`,
-                arg: isSvgQuery ? icon.p : `import { ${camelCaseName} } from '@mdi/js'`,
+                subtitle: isSvgQuery ? 'Copy SVG path' : importStatement,
+                arg: isSvgQuery ? icon.p : importStatement,
                 icon: {
                     path: svgPath
+                },
+                mods: {
+                    alt: {
+                        subtitle: `Aliases: ${icon.al ? icon.al.join(', ') : 'None'}`,
+                        arg: icon.n
+                    }
                 }
             };
         }));
