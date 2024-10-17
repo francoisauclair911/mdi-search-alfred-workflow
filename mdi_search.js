@@ -25,7 +25,7 @@ async function run(argv) {
                 uid: icon.n,
                 title: icon.n,
                 subtitle: `Aliases: ${icon.al ? icon.al.join(', ') : 'None'}`,
-                arg: icon.p,
+                arg: "icon.p",
                 icon: {
                     path: svgPath
                 }
