@@ -2,10 +2,11 @@ const fs = require('fs');
 const path = require('path');
 
 async function run(argv) {
-    console.log("Raw arguments:", argv);
+    // Use console.error for debug logging
+    console.error("Raw arguments:", argv);
     try {
         const query = argv.join(' ').toLowerCase();
-        console.log("🚀 ~ run ~ query:", query)
+        console.error("🚀 ~ run ~ query:", query);
         
         if (query.length < 3) {
             console.log(JSON.stringify({
@@ -59,8 +60,11 @@ async function run(argv) {
             matchingIconNames: matchingIcons.map(icon => icon.n)
         };
 
-        console.log(JSON.stringify({ items, debugInfo }));
+        // Use console.error for debug logging
+        console.error("Debug info:", JSON.stringify(debugInfo));
+        console.log(JSON.stringify({ items }));
     } catch (error) {
+        console.error("Error:", error);
         console.log(JSON.stringify({ 
             items: [{
                 uid: 'error',
