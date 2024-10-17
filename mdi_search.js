@@ -32,9 +32,9 @@ async function run(argv) {
             }
         }));
 
-        // console.log(JSON.stringify({ items }));
+        console.log(JSON.stringify({ items }));
     } catch (error) {
-        console.log('Error:', error.message);
+        console.error('Error:', error.message);
         console.log(JSON.stringify({ 
             items: [{
                 title: 'Error occurred',
