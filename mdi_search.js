@@ -19,16 +19,16 @@ async function run(argv) {
         console.log(`Total icons: ${icons.length}`); // Log total number of icons
 
         const matchingIcons = icons.filter(icon => 
-            icon.name.toLowerCase().includes(query) || 
-            icon.aliases.some(alias => alias.toLowerCase().includes(query))
+            icon.n.toLowerCase().includes(query) || 
+            icon.al.some(alias => alias.toLowerCase().includes(query))
         );
 
         console.log(`Matching icons: ${matchingIcons.length}`); // Log number of matching icons
 
         const items = matchingIcons.map(icon => ({
-            title: icon.name,
-            subtitle: `Aliases: ${icon.aliases.join(', ')}`,
-            arg: icon.data,
+            title: icon.n,
+            subtitle: `Aliases: ${icon.al.join(', ')}`,
+            arg: icon.p,
             icon: {
                 path: `data:image/svg+xml,${encodeURIComponent(generateSVG(icon.data))}`
             }
